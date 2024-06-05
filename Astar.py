@@ -198,3 +198,4 @@ def main(win, width):
 
 main(WIN, WIDTH)
 
+print("")
