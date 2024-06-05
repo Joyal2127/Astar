@@ -117,7 +117,8 @@ def algorithm(draw, grid, start, end):
     if current == end:
         return True
     
-    for neighbor in current.neigbors:
+    for neighbor in current.neighbors:
+        temp_g_score = g_score[current] + 1
 
 def make_grid(rows, width):
     grid = []
