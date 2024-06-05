@@ -105,6 +105,9 @@ def algorithm(draw, grid, start, end):
 
     open_set_hash ={start}
     
+    while not open_set.empty():
+        for event in pygame.event.get():
+            
 
 
 def make_grid(rows, width):
