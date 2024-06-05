@@ -107,7 +107,9 @@ def algorithm(draw, grid, start, end):
     
     while not open_set.empty():
         for event in pygame.event.get():
-            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+
 
 
 def make_grid(rows, width):
