@@ -223,7 +223,7 @@ def main(win, width):
                 if event.key == pygame.K_SPACE and not started:
                     for row in grid:
                         for spot in row:
-                            spot.update_neighbors()
+                            spot.update_neighbors(grid)
                     algorithm(lambda:  draw(win, grid, ROWS, width), grid, start, end)
             
     pygame.quit()
