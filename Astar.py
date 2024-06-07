@@ -72,7 +72,7 @@ class Spot:
 
     def update_neighbors(self, grid):
         self.neighbors=[]
-        if self.row < self.total_rows - 1 and not grid[self.row -1 ][self.col].is_barrier(): #down
+        if self.row < self.total_rows - 1 and not grid[self.row + 1][self.col].is_barrier(): #down
             self.neighbors.append(grid[self.row + 1][self.col])
 
         if self.row > 0 and not grid[self.row -1 ][self.col].is_barrier():#up
@@ -115,6 +115,8 @@ def algorithm(draw, grid, start, end):
         open_set_hash.remove(current)
 
         if current == end:
+            reconstruct_path(came_from, end, draw)
+			end.make_end()
             return True
     
         for neighbor in current.neighbors:
@@ -191,8 +193,7 @@ def main(win, width):
             if event.type == pygame.QUIT:
                 run = False
 
-            if started:
-                continue
+            
 
             if pygame.mouse.get_pressed()[0]:
                 pos = pygame.mouse.get_pos()
@@ -220,7 +221,7 @@ def main(win, width):
                     end = None
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE and not started:
+                if event.key == pygame.K_SPACE and start and end:
                     for row in grid:
                         for spot in row:
                             spot.update_neighbors(grid)
