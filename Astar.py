@@ -124,7 +124,7 @@ def algorithm(draw, grid, start, end):
 
             if temp_g_score < g_score[neighbor]:
                 came_from[neighbor] = current
-                g_score[current] = temp_g_score
+                g_score[neighbor] = temp_g_score
                 f_score[neighbor] = temp_g_score + h(neighbor.get_pos(), end.get_pos())
                 if neighbor not in open_set_hash:
                     count += 1
@@ -226,6 +226,11 @@ def main(win, width):
                         for spot in row:
                             spot.update_neighbors(grid)
                     algorithm(lambda:  draw(win, grid, ROWS, width), grid, start, end)
+                
+                if event.key == pygame.K_c:
+					start = None
+					end = None
+					grid = make_grid(ROWS, width)
             
     pygame.quit()
 
