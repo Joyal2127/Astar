@@ -8,7 +8,7 @@ pygame.display.set_caption("A* Path Finding Algorithm ")
 
 RED = (255, 0, 0)
 GREEN =(0, 255, 0)
-BLUE = (0, 0, 255)
+BLUE = (0, 255, 0)
 YELLOW = (255, 255, 0)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -122,7 +122,7 @@ def algorithm(draw, grid, start, end):
 
         if current == end:
             reconstruct_path(came_from, end, draw)
-			end.make_end()
+            end.make_end()
             return True
     
         for neighbor in current.neighbors:
@@ -143,7 +143,7 @@ def algorithm(draw, grid, start, end):
         if current != start:
             current.make_closed()
 
-    return None
+    return False
 
 
 
@@ -192,7 +192,7 @@ def main(win, width):
     end= None
 
     run =True
-    started = False
+    
     while run:
         draw(win, grid, ROWS, width)
         for event in pygame.event.get():
@@ -234,9 +234,9 @@ def main(win, width):
                     algorithm(lambda:  draw(win, grid, ROWS, width), grid, start, end)
                 
                 if event.key == pygame.K_c:
-					start = None
-					end = None
-					grid = make_grid(ROWS, width)
+                    start = None
+                    end = None
+                    grid = make_grid(ROWS, width)
             
     pygame.quit()
 
